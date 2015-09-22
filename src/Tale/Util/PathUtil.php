@@ -36,16 +36,28 @@ class PathUtil extends Util
      *
      * @return string The normalized, joined path
      */
-    public static function join($path, $subPath)
+    public static function join(...$paths)
     {
 
+        if (!count($paths))
+            throw new \InvalidArgumentException(
+                "Failed to join paths: No paths given"
+            );
+
         $ds = \DIRECTORY_SEPARATOR;
-        $path = self::normalize($path);
-        $subPath = self::normalize($subPath);
+        $path = null;
+        foreach ($paths as $subPath) {
 
-        $subPath = $ds.ltrim($subPath, $ds);
+            if (!$path) {
 
-        return "$path$subPath";
+                $path = self::normalize($subPath);
+                continue;
+            }
+
+            $path = $path.$ds.ltrim(self::normalize($subPath), $ds);
+        }
+
+        return $path;
     }
 
     /**

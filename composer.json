@@ -1,0 +1,21 @@
+{
+    "name": "talesoft/tale-util",
+    "description": "A simple collection of basic PHP utilities",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Torben Koehn",
+            "email": "tk@talesoft.io"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Tale\\Util": "src/"
+        }
+    }
+}

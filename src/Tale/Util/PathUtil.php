@@ -28,17 +28,15 @@ class PathUtil extends Util
 {
 
     /**
-     * Normalizes and joins two path strings so that you always get a valid path
+     * Normalizes and joins two or more path strings so that you always get a valid path
      * without worrying about where the slashes have to be put
-     *
-     * @param string $path     The input path
-     * @param string $subPath  The sub path to append safely
      *
      * @return string The normalized, joined path
      */
-    public static function join(...$paths)
+    public static function join()
     {
 
+        $paths = func_get_args();
         if (!count($paths))
             throw new \InvalidArgumentException(
                 "Failed to join paths: No paths given"
